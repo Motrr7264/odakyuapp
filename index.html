@@ -1,0 +1,83 @@
+// ===== 1. 駅すぱあとAPIの設定 =====
+const API_KEY = 'LE_eWWAAeLcqGQ3g'; // ←ここにもらったキーを貼り付けてください
+
+// ===== 2. 検索実行（APIにリクエストを送る） =====
+async function runSearch() {
+    const origin = document.getElementById('origin-select').value;
+    const dest = document.getElementById('dest-select').value;
+    const timeStr = document.getElementById('time-input').value;
+    
+    if (!timeStr || origin === dest) return;
+
+    // 画面に「検索中」と表示
+    document.getElementById('results').innerHTML = `<div class="results-empty">🔄 駅すぱあとに問い合わせ中...</div>`;
+
+    // 時刻から : を抜く (例: 09:20 -> 0920)
+    const formattedTime = timeStr.replace(':', '');
+
+    // 駅すぱあと API の URL（経路検索）
+    // search/course/extreme というエンドポイントを使います
+    const url = `https://api.ekispert.jp/v1/json/search/course/extreme?key=${API_KEY}&viaList=${encodeURIComponent(origin)}:${encodeURIComponent(dest)}&time=${formattedTime}&searchType=${timeMode}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        // APIから返ってきたデータを解析して画面に表示
+        renderApiResults(data, origin, dest);
+    } catch (err) {
+        console.error("APIエラー:", err);
+        document.getElementById('results').innerHTML = `<div class="results-empty" style="color:red;">⚠️ エラーが発生しました。APIキーが正しいか確認してください。</div>`;
+    }
+}
+
+// ===== 3. APIの結果をあなたのデザインに当てはめる =====
+function renderApiResults(data, origin, dest) {
+    const results = document.getElementById('results');
+    
+    // 経路が見つからなかった場合
+    if (!data.ResultSet.Course) {
+        results.innerHTML = `<div class="results-empty">経路が見つかりませんでした。</div>`;
+        return;
+    }
+
+    // 複数の経路候補がある場合、配列にする
+    let courses = data.ResultSet.Course;
+    if (!Array.isArray(courses)) courses = [courses];
+
+    let html = `<div class="results-heading">「駅すぱあと」による検索結果</div>`;
+
+    courses.forEach((course, i) => {
+        const route = course.Route;
+        const price = course.Price?.[0]?.Oneway || "---"; // 運賃
+        const time = course.TimeSummary; // 所要時間など
+
+        html += `
+        <div class="option-card ${i === 0 ? 'best' : ''}">
+            <div class="option-card-top">
+                <span class="option-arrival">${route.Line.ArrivalState.Datetime.text.split('T')[1].substring(0,5)}</span>
+                <span class="option-arrival-label">着 (所要${time.Total}分 / ${price}円)</span>
+            </div>
+            <div class="legs">
+        `;
+
+        // 乗り継ぎの表示（駅すぱあとの形式に合わせる）
+        // ※簡易化のため、最初の路線の情報を表示
+        const line = Array.isArray(route.Line) ? route.Line : [route.Line];
+        line.forEach((l, li) => {
+            if (li > 0) html += `<div class="transfer-marker">乗換</div>`;
+            html += `
+                <div class="leg">
+                    <div class="leg-time">${l.DepartureState.Datetime.text.split('T')[1].substring(0,5)}</div>
+                    <div class="leg-detail">
+                        <span class="leg-type-chip" style="background:#1f3a93">${l.Name}</span>
+                        <span>${l.DepartureState.Name} ➔ ${l.ArrivalState.Name}</span>
+                    </div>
+                </div>`;
+        });
+
+        html += `</div></div>`;
+    });
+
+    results.innerHTML = html;
+}
