@@ -192,21 +192,43 @@ function updateModeBtns() {
 // ==========================================
 async function runSearch() {
     const origin = document.getElementById('origin-select').value;
-    const dest = document.getElementById('dest-select');
+    const dest = document.getElementById('dest-select').value;
     const timeStr = document.getElementById('time-input').value;
 
-    if (!timeStr || origin === dest.value) return;
+    if (!timeStr || origin === dest) return;
 
     // 「検索中」の表示
     document.getElementById('results').innerHTML = `<div class="results-empty">🔄 駅すぱあとに問い合わせ中...</div>`;
 
     const formattedTime = timeStr.replace(':', ''); 
-    const url = `https://api.ekispert.jp/v1/json/search/course/extreme?key=${API_KEY}&viaList=${encodeURIComponent(origin)}:${encodeURIComponent(dest.value)}&time=${formattedTime}&searchType=${timeMode}`;
+    const url = `https://api.ekispert.jp/v1/json/search/course/extreme?key=${API_KEY}&viaList=${encodeURIComponent(origin)}:${encodeURIComponent(dest)}&time=${formattedTime}&searchType=${timeMode}`;
 
     try {
         const response = await fetch(url);
         const data = await response.json();
-        renderApiResults(data, origin.replace(/\(.*\)/, ''), dest.value.replace(/\(.*\)/, ''));
+        
+        // 💡 変更点：APIからのエラーを画面に表示する
+        if (data.ResultSet && data.ResultSet.Error) {
+             document.getElementById('results').innerHTML = `
+             <div class="results-empty" style="color:#dc2626;">
+                <strong>⚠️ APIエラーが発生しました</strong><br><br>
+                理由: ${data.ResultSet.Error.Message}<br>
+                <span style="font-size:12px; color:gray;">(エラーコード: ${data.ResultSet.Error.code})</span>
+             </div>`;
+             return;
+        }
+
+        // 💡 変更点：駅名が曖昧で複数の候補が返ってきた場合
+        if (data.ResultSet && data.ResultSet.Point) {
+            document.getElementById('results').innerHTML = `
+            <div class="results-empty" style="color:#d97706;">
+                <strong>⚠️ 駅名が特定できませんでした</strong><br>
+                APIが「どの路線の駅か」迷っています。
+            </div>`;
+            return;
+        }
+
+        renderApiResults(data, origin.replace(/\(.*\)/, ''), dest.replace(/\(.*\)/, ''));
     } catch (err) {
         console.error(err);
         document.getElementById('results').innerHTML = `<div class="results-empty" style="color:red;">⚠️ 通信エラーが発生しました。</div>`;
@@ -220,7 +242,7 @@ function renderApiResults(data, origin, dest) {
     const results = document.getElementById('results');
     
     if (!data.ResultSet || !data.ResultSet.Course) {
-        results.innerHTML = `<div class="results-empty">経路が見つかりませんでした。</div>`;
+        results.innerHTML = `<div class="results-empty">経路が見つかりませんでした。（APIの回答に経路が含まれていません）</div>`;
         return;
     }
 
