@@ -26,42 +26,34 @@
 body { background: var(--cream); color: var(--ink); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
 ::selection { background: var(--amber-soft); }
 
-/* ===== Header ===== */
 header.hero { background: var(--navy); color: white; padding: 48px 24px 64px; position: relative; overflow: hidden; }
 .hero-inner { max-width: 920px; margin: 0 auto; }
 .eyebrow-container { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
-.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); background: rgba(232, 116, 44, 0.14); border: 1px solid rgba(232, 116, 44, 0.35); padding: 6px 14px; border-radius: 100px; }
-.sfc-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); padding: 6px 16px; border-radius: 100px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.05em; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-h1.title { font-family: var(--font-display); font-size: clamp(32px, 6vw, 54px); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; margin-bottom: 16px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 13px; font-weight: 600; color: var(--amber); background: rgba(232, 116, 44, 0.14); border: 1px solid rgba(232, 116, 44, 0.35); padding: 6px 14px; border-radius: 100px; }
+.sfc-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); padding: 6px 16px; border-radius: 100px; font-family: var(--font-display); font-size: 13px; font-weight: 700; color: white; }
+h1.title { font-family: var(--font-display); font-size: clamp(32px, 6vw, 54px); font-weight: 700; line-height: 1.1; margin-bottom: 16px; }
 h1.title .accent { color: var(--amber); }
-.hero-sub { font-size: 16px; color: rgba(255,255,255,0.78); max-width: 560px; }
 
-/* ===== Main layout ===== */
 main { max-width: 920px; margin: 0 auto; padding: 0 24px 96px; }
 .panel { background: var(--paper); border: 1px solid var(--line-grey); border-radius: 14px; margin-top: -32px; position: relative; z-index: 2; box-shadow: 0 12px 32px -16px rgba(20, 42, 107, 0.18); }
-
-/* ===== Controls ===== */
 .controls { padding: 24px 28px 20px; border-bottom: 1px solid var(--line-grey); }
 .controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-.field label.field-label { display: flex; align-items: center; font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 8px; }
-.field select, .field input[type="time"] { width: 100%; padding: 10px 14px; border: 1.5px solid var(--line-grey); border-radius: 9px; font-family: var(--font-body); font-size: 16px; background: var(--cream); color: var(--ink); height: 44px; cursor: pointer; }
+.field label.field-label { display: flex; align-items: center; font-family: var(--font-display); font-size: 12px; font-weight: 600; color: var(--ink-soft); margin-bottom: 8px; }
+.field select, .field input[type="time"] { width: 100%; padding: 10px 14px; border: 1.5px solid var(--line-grey); border-radius: 9px; font-size: 16px; background: var(--cream); height: 44px; }
 .swap-row { display: flex; align-items: center; gap: 12px; margin: -4px 0 16px; }
-.swap-btn { background: var(--amber-soft); border: none; color: var(--amber); width: 34px; height: 34px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.15s; }
-.swap-btn:hover { background: var(--amber); color: white; transform: rotate(180deg); }
+.swap-btn { background: var(--amber-soft); border: none; color: var(--amber); width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 .daytype-toggle { display: flex; background: var(--cream); border: 1.5px solid var(--line-grey); border-radius: 9px; padding: 3px; gap: 3px; height: 44px; }
 .daytype-toggle button { flex: 1; font-family: var(--font-display); font-size: 14px; font-weight: 600; border: none; background: transparent; border-radius: 6px; cursor: pointer; color: var(--ink-soft); }
 .daytype-toggle button.active { background: var(--navy); color: white; }
 
-/* ===== Results ===== */
 .results { padding: 28px; }
 .results-empty { text-align: center; padding: 48px 24px; color: var(--ink-soft); }
 .results-heading { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink-soft); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 .time-badge { background: var(--navy); color: white; padding: 4px 10px; border-radius: 6px; font-size: 13px; }
 
-/* Option cards */
 .option-card { border: 1.5px solid var(--line-grey); border-radius: 12px; padding: 18px 20px; margin-bottom: 14px; }
 .option-card.best { border-color: var(--good-green); background: linear-gradient(180deg, rgba(47,143,91,0.05), transparent 60%); }
-.option-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; gap: 12px; }
+.option-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
 .option-arrival { font-family: var(--font-display); font-size: 28px; font-weight: 700; }
 .option-arrival-label { font-size: 13px; color: var(--ink-soft); font-weight: 600;}
 
@@ -73,7 +65,7 @@ main { max-width: 920px; margin: 0 auto; padding: 0 24px 96px; }
 .transfer-marker { display: flex; align-items: center; gap: 10px; padding: 4px 0 4px 90px; font-size: 12px; color: var(--ink-soft); font-weight: 700; }
 .transfer-marker::before { content: "↓"; color: var(--amber); }
 
-footer { text-align: center; padding: 32px 24px; font-size: 13px; color: var(--ink-soft); font-family: var(--font-display); }
+footer { text-align: center; padding: 32px 24px; font-size: 13px; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -82,231 +74,126 @@ footer { text-align: center; padding: 32px 24px; font-size: 13px; color: var(--i
   <div class="hero-inner">
     <div class="eyebrow-container">
       <span class="eyebrow">小田急線</span>
-      <div class="sfc-badge">
-        <span>SFC Student Edition</span>
-      </div>
+      <div class="sfc-badge"><span>SFC Student Edition</span></div>
     </div>
     <h1 class="title">待つ？乗る？<br><span class="accent">最適ルートを即判定。</span></h1>
-    <p class="hero-sub">「駅すぱあとAPI」搭載で、完璧な乗り換え経路をご案内します。</p>
+    <p class="hero-sub">フリープランAPI対応版。プロのデータで検索します。</p>
   </div>
 </header>
 
 <main>
-  <div class="panel" id="main-controls">
+  <div class="panel">
     <div class="controls">
       <div class="controls-grid">
         <div class="field">
-          <label class="field-label" for="origin-select">乗車駅</label>
+          <label class="field-label">乗車駅</label>
           <select id="origin-select"></select>
         </div>
         <div class="field">
-          <label class="field-label" for="dest-select">目的駅</label>
+          <label class="field-label">目的駅</label>
           <select id="dest-select"></select>
         </div>
       </div>
-
-      <div class="swap-row">
-        <button class="swap-btn" id="swap-btn" aria-label="駅を入れ替える">⇅</button>
-        <span style="font-size:13px; color:var(--ink-soft);">駅を入れ替え</span>
-      </div>
-
+      <div class="swap-row"><button class="swap-btn" id="swap-btn">⇅</button></div>
       <div class="controls-grid">
         <div class="field">
-          <label class="field-label" for="time-input">時刻</label>
-          <input type="time" id="time-input" value="09:20">
+          <label class="field-label">時刻</label>
+          <input type="time" id="time-input" value="09:00">
         </div>
         <div class="field">
-          <label class="field-label">条件指定</label>
-          <div class="daytype-toggle" role="group">
-            <button type="button" id="dep-btn" class="active">出発</button>
-            <button type="button" id="arr-btn">到着</button>
+          <label class="field-label">条件</label>
+          <div class="daytype-toggle">
+            <button id="dep-btn" class="active">出発</button>
+            <button id="arr-btn">到着</button>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="results" id="results">
-      <div class="results-empty">
-        駅を選んで「時間」を変えると検索が始まります。
-      </div>
-    </div>
+    <div class="results" id="results"><div class="results-empty">駅を選んでください。</div></div>
   </div>
 </main>
 
-<footer>Odakyu Departure Race — Powered by 駅すぱあとAPI</footer>
-
 <script>
-// ==========================================
-// 1. 設定（APIキーと駅リスト）
-// ==========================================
 const API_KEY = 'LE_eWWAAeLcqGQ3g';
 let timeMode = 'departure'; 
 
-const ODAKYU_STATIONS = [
-  "新宿", "南新宿", "参宮橋", "代々木八幡", "代々木上原", "東北沢", "下北沢", "世田谷代田", "梅ケ丘", "豪徳寺", "経堂", "千歳船橋", "祖師ケ谷大蔵", "成城学園前", "喜多見", "狛江", "和泉多摩川", "登戸", "向ケ丘遊園", "生田(神奈川県)", "読売ランド前", "百合ケ丘", "新百合ケ丘", "五月台", "栗平", "黒川(神奈川県)", "はるひ野", "小田急永山", "小田急多摩センター", "唐木田", "柿生", "鶴川", "玉川学園前", "町田", "相模大野", "東林間", "中央林間", "南林間", "鶴間", "大和(神奈川県)", "桜ケ丘", "高座渋谷", "長後", "湘南台", "六会日大前", "善行", "藤沢本町", "藤沢", "本鵠沼", "鵠沼海岸", "片瀬江ノ島", "小田急相模原", "相武台前", "座間", "海老名", "厚木", "本厚木", "愛甲石田", "伊勢原", "鶴巻温泉", "東海大学前", "秦野", "渋沢", "新松田", "開成", "栢山", "富水", "螢田", "足柄(神奈川県)", "小田原"
-];
+const ODAKYU_STATIONS = ["新宿", "代々木上原", "下北沢", "経堂", "成城学園前", "登戸", "向ケ丘遊園", "新百合ケ丘", "町田", "相模大野", "海老名", "本厚木", "伊勢原", "秦野", "小田原", "中央林間", "大和(神奈川県)", "湘南台", "藤沢", "片瀬江ノ島", "小田急多摩センター", "唐木田"];
 
-const TRAIN_TYPE_COLOR = {
-    "特急": "#e8742c", "快速急行": "#1f3a93", "急行": "#e85d3e", 
-    "通勤急行": "#e85d3e", "準急": "#10b981", "通勤準急": "#10b981", 
-    "各停": "#6b7280", "各駅停車": "#6b7280", "default": "#1f3a93"
-};
-
-// ==========================================
-// 2. ページを開いた時の準備
-// ==========================================
 window.onload = () => {
     const originSel = document.getElementById('origin-select');
     const destSel = document.getElementById('dest-select');
-    
-    // ドロップダウンに駅名を入れる
     ODAKYU_STATIONS.forEach(name => {
         originSel.add(new Option(name.replace(/\(.*\)/, ''), name)); 
         destSel.add(new Option(name.replace(/\(.*\)/, ''), name));
     });
-    
-    // 初期値をセット
-    originSel.value = "湘南台";
-    destSel.value = "新宿";
+    originSel.value = "湘南台"; destSel.value = "新宿";
 
-    // ボタンなどを押した時の動作を設定
-    document.getElementById('dep-btn').addEventListener('click', () => { timeMode = 'departure'; updateModeBtns(); runSearch(); });
-    document.getElementById('arr-btn').addEventListener('click', () => { timeMode = 'arrival'; updateModeBtns(); runSearch(); });
-    document.getElementById('swap-btn').addEventListener('click', () => { 
-        const tmp = originSel.value; originSel.value = destSel.value; destSel.value = tmp; runSearch(); 
-    });
-    document.getElementById('origin-select').addEventListener('change', runSearch);
-    document.getElementById('dest-select').addEventListener('change', runSearch);
-    document.getElementById('time-input').addEventListener('change', runSearch);
-
-    runSearch(); // 最初から1回検索しておく
+    document.getElementById('dep-btn').onclick = () => { timeMode = 'departure'; updateBtns(); runSearch(); };
+    document.getElementById('arr-btn').onclick = () => { timeMode = 'arrival'; updateBtns(); runSearch(); };
+    document.getElementById('swap-btn').onclick = () => { const t = originSel.value; originSel.value = destSel.value; destSel.value = t; runSearch(); };
+    [originSel, destSel, document.getElementById('time-input')].forEach(el => el.onchange = runSearch);
+    runSearch();
 };
 
-function updateModeBtns() {
+function updateBtns() {
     document.getElementById('dep-btn').classList.toggle('active', timeMode === 'departure');
     document.getElementById('arr-btn').classList.toggle('active', timeMode === 'arrival');
 }
 
-// ==========================================
-// 3. APIに検索をお願いする処理
-// ==========================================
 async function runSearch() {
-    const origin = document.getElementById('origin-select').value;
-    const dest = document.getElementById('dest-select').value;
+    const fromStation = document.getElementById('origin-select').value;
+    const toStation = document.getElementById('dest-select').value;
     const timeStr = document.getElementById('time-input').value;
+    if (!timeStr || fromStation === toStation) return;
 
-    if (!timeStr || origin === dest) return;
-
-    // 「検索中」の表示
     document.getElementById('results').innerHTML = `<div class="results-empty">🔄 駅すぱあとに問い合わせ中...</div>`;
 
-    const formattedTime = timeStr.replace(':', ''); 
-    const url = `https://api.ekispert.jp/v1/json/search/course/extreme?key=${API_KEY}&viaList=${encodeURIComponent(origin)}:${encodeURIComponent(dest)}&time=${formattedTime}&searchType=${timeMode}`;
+    const formattedTime = timeStr.replace(':', '');
+    // 💡 フリープラン用の「light」エンドポイントを使用
+    const url = `https://api.ekispert.jp/v1/json/search/course/light?key=${API_KEY}&from=${encodeURIComponent(fromStation)}&to=${encodeURIComponent(toStation)}&time=${formattedTime}&searchType=${timeMode}`;
 
     try {
-        const response = await fetch(url);
-        const data = await response.json();
+        const res = await fetch(url);
+        const data = await res.json();
         
-        // 💡 変更点：APIからのエラーを画面に表示する
-        if (data.ResultSet && data.ResultSet.Error) {
-             document.getElementById('results').innerHTML = `
-             <div class="results-empty" style="color:#dc2626;">
-                <strong>⚠️ APIエラーが発生しました</strong><br><br>
-                理由: ${data.ResultSet.Error.Message}<br>
-                <span style="font-size:12px; color:gray;">(エラーコード: ${data.ResultSet.Error.code})</span>
-             </div>`;
-             return;
-        }
-
-        // 💡 変更点：駅名が曖昧で複数の候補が返ってきた場合
-        if (data.ResultSet && data.ResultSet.Point) {
-            document.getElementById('results').innerHTML = `
-            <div class="results-empty" style="color:#d97706;">
-                <strong>⚠️ 駅名が特定できませんでした</strong><br>
-                APIが「どの路線の駅か」迷っています。
-            </div>`;
+        if (data.ResultSet.Error) {
+            document.getElementById('results').innerHTML = `<div class="results-empty" style="color:red;">⚠️ APIエラー: ${data.ResultSet.Error.Message}</div>`;
             return;
         }
-
-        renderApiResults(data, origin.replace(/\(.*\)/, ''), dest.replace(/\(.*\)/, ''));
-    } catch (err) {
-        console.error(err);
-        document.getElementById('results').innerHTML = `<div class="results-empty" style="color:red;">⚠️ 通信エラーが発生しました。</div>`;
+        renderResults(data);
+    } catch (e) {
+        document.getElementById('results').innerHTML = `<div class="results-empty">⚠️ 通信エラーが発生しました。</div>`;
     }
 }
 
-// ==========================================
-// 4. APIの結果をSFCデザインで表示する処理
-// ==========================================
-function renderApiResults(data, origin, dest) {
+function renderResults(data) {
     const results = document.getElementById('results');
-    
-    if (!data.ResultSet || !data.ResultSet.Course) {
-        results.innerHTML = `<div class="results-empty">経路が見つかりませんでした。（APIの回答に経路が含まれていません）</div>`;
-        return;
-    }
+    if (!data.ResultSet.Course) { results.innerHTML = `<div class="results-empty">経路なし</div>`; return; }
 
-    let courses = data.ResultSet.Course;
-    if (!Array.isArray(courses)) courses = [courses];
+    let courses = Array.isArray(data.ResultSet.Course) ? data.ResultSet.Course : [data.ResultSet.Course];
+    let html = `<div class="results-heading"><span class="time-badge">Free Plan API</span> 検索結果</div>`;
 
-    const modeLabel = timeMode === 'departure' ? '出発' : '到着';
-    let html = `<div class="results-heading"><span class="time-badge">プロ用データ</span> ${origin} → ${dest}</div>`;
-
-    courses.slice(0, 3).forEach((course, i) => {
+    courses.forEach((course, i) => {
         const route = course.Route;
         const time = course.TimeSummary;
-        const priceObj = course.Price ? (Array.isArray(course.Price) ? course.Price[0] : course.Price) : null;
-        const price = priceObj ? priceObj.Oneway + "円" : "---";
+        const arrivalTime = route.ArrivalState.Datetime.text.split('T')[1].substring(0, 5);
         
-        const arrTimeStr = route.ArrivalState ? route.ArrivalState.Datetime.text : "";
-        const arrivalTime = arrTimeStr ? arrTimeStr.split('T')[1].substring(0, 5) : "--:--";
+        html += `<div class="option-card ${i===0?'best':''}">
+            <div class="option-card-top"><span class="option-arrival">${arrivalTime} 着</span><span class="option-arrival-label">所要${time.Total}分</span></div>
+            <div class="legs">`;
 
-        html += `
-        <div class="option-card ${i === 0 ? 'best' : ''}">
-            <div class="option-card-top">
-                <span class="option-arrival">${arrivalTime}</span>
-                <span class="option-arrival-label">着 (所要${time.Total}分 / ${price})</span>
-            </div>
-            <div class="legs">
-        `;
-
-        let lines = route.Line;
-        if (!Array.isArray(lines)) lines = [lines];
-
+        let lines = Array.isArray(route.Line) ? route.Line : [route.Line];
         lines.forEach((l, li) => {
             if (li > 0) html += `<div class="transfer-marker">乗換</div>`;
-
-            const depTime = l.DepartureState.Datetime.text.split('T')[1].substring(0, 5);
-            const arrTime = l.ArrivalState.Datetime.text.split('T')[1].substring(0, 5);
-            
-            // 種別の色決め
-            let color = TRAIN_TYPE_COLOR.default;
-            let typeLabel = l.Name;
-            for (let type in TRAIN_TYPE_COLOR) {
-                if (l.Name.includes(type)) {
-                    color = TRAIN_TYPE_COLOR[type];
-                    typeLabel = type;
-                    break;
-                }
-            }
-
-            html += `
-                <div class="leg">
-                    <div class="leg-time">${depTime}</div>
-                    <div class="leg-detail">
-                        <span class="leg-type-chip" style="background:${color}">${typeLabel}</span>
-                        <span>${l.DepartureState.Name} → ${l.ArrivalState.Name}</span>
-                    </div>
-                </div>`;
-            
-            if (li === lines.length - 1) {
-                html += `<div class="leg"><div class="leg-time">${arrTime}</div><div class="leg-detail" style="font-weight:600;">${l.ArrivalState.Name} 到着</div></div>`;
-            }
+            const depT = l.DepartureState.Datetime.text.split('T')[1].substring(0, 5);
+            const color = l.Name.includes('急') ? '#e85d3e' : '#6b7280';
+            html += `<div class="leg">
+                <div class="leg-time">${depT}</div>
+                <div class="leg-detail"><span class="leg-type-chip" style="background:${color}">${l.Name}</span><span>${l.DepartureState.Name} ➔ ${l.ArrivalState.Name}</span></div>
+            </div>`;
         });
-
         html += `</div></div>`;
     });
-
     results.innerHTML = html;
 }
 </script>
