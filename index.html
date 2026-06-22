@@ -3,37 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>のりかえ早見 — Shonandai to Shinjuku</title>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<title>のりかえ早見 — Odakyu Line (SFC Edition)</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root { --navy: #1f3a93; --amber: #e8742c; --cream: #faf7f2; --paper: #ffffff; --ink: #1a1d29; --ink-soft: #5b5f72; --line-grey: #d8d4ca; --good-green: #2f8f5b; }
+:root {
+  --navy: #1f3a93; --amber: #e8742c; --cream: #faf7f2; --paper: #ffffff;
+  --ink: #1a1d29; --ink-soft: #5b5f72; --line-grey: #d8d4ca; --good-green: #2f8f5b;
+}
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--cream); color: var(--ink); font-family: 'Zen Kaku Gothic New', sans-serif; line-height: 1.6; }
-header { background: var(--navy); color: white; padding: 40px 24px 60px; text-align: center; }
-h1 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 8px; }
+body { background: var(--cream); color: var(--ink); font-family: 'Zen Kaku Gothic New', sans-serif; }
+
+header.hero { background: var(--navy); color: white; padding: 48px 24px 64px; text-align: center; }
+.hero-inner { max-width: 800px; margin: 0 auto; }
+.eyebrow { display: inline-flex; background: rgba(232,116,44,0.15); color: var(--amber); border: 1px solid var(--amber); padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; margin-bottom: 16px; }
+h1.title { font-family: 'Space Grotesk', sans-serif; font-size: 42px; line-height: 1.1; margin-bottom: 10px; }
 .accent { color: var(--amber); }
-main { max-width: 800px; margin: 0 auto; padding: 0 20px 80px; }
-.panel { background: var(--paper); border: 1px solid var(--line-grey); border-radius: 14px; margin-top: -30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-.controls { padding: 25px; border-bottom: 1px solid var(--line-grey); }
-.controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-.field label { display: block; font-size: 11px; font-weight: 900; color: var(--ink-soft); margin-bottom: 5px; }
+
+main { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+.panel { background: var(--paper); border: 1px solid var(--line-grey); border-radius: 14px; margin-top: -32px; box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+.controls { padding: 24px; border-bottom: 1px solid var(--line-grey); }
+.controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.field label { display: block; font-size: 11px; font-weight: 900; color: var(--ink-soft); margin-bottom: 6px; text-transform: uppercase; }
 select, input { width: 100%; padding: 10px; border: 1.5px solid var(--line-grey); border-radius: 8px; font-size: 16px; background: var(--cream); height: 44px; }
-.results { padding: 25px; }
-.results-empty { text-align: center; padding: 40px; color: var(--ink-soft); font-weight: 700; }
-.option-card { border: 1.5px solid var(--line-grey); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+
+.results { padding: 24px; }
+.option-card { border: 1.5px solid var(--line-grey); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
 .option-card.best { border-color: var(--good-green); background: linear-gradient(180deg, rgba(47,143,91,0.05), transparent); }
-.option-time { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; }
-.leg { display: grid; grid-template-columns: 70px 1fr; gap: 10px; padding: 8px 0; align-items: center; border-left: 3px solid var(--line-grey); margin-left: 10px; padding-left: 15px; }
-.leg-time { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
-.type-chip { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; color: white; display: inline-block; }
+.option-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px; }
+.option-time { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; }
+.leg { display: grid; grid-template-columns: 75px 1fr; gap: 10px; padding: 10px 0; align-items: center; border-left: 3px solid var(--line-grey); margin-left: 10px; padding-left: 15px; }
+.leg-time { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--ink-soft); }
+.type-chip { font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 4px; color: white; display: inline-block; margin-bottom: 4px; }
 </style>
 </head>
 <body>
 
-<header>
+<header class="hero">
   <div class="hero-inner">
-    <h1>ODAKYU <span class="accent">RACE</span></h1>
-    <p style="font-size: 14px; opacity: 0.8;">SFC Student Edition / Official Data Mode</p>
+    <span class="eyebrow">ODAKYU LINE</span>
+    <h1 class="title">待つ？乗る？<br><span class="accent">最適ルート判定。</span></h1>
+    <p style="opacity:0.8; font-size:14px;">SFC Student Edition / Logic Simulation Mode</p>
   </div>
 </header>
 
@@ -41,12 +50,12 @@ select, input { width: 100%; padding: 10px; border: 1.5px solid var(--line-grey)
   <div class="panel">
     <div class="controls">
       <div class="controls-grid">
-        <div class="field"><label>FROM</label><select id="from-select"><option value="湘南台">湘南台</option></select></div>
-        <div class="field"><label>TO</label><select id="to-select"><option value="新宿">新宿</option></select></div>
+        <div class="field"><label>出発駅</label><select id="from-select"></select></div>
+        <div class="field"><label>到着駅</label><select id="to-select"></select></div>
       </div>
       <div class="controls-grid">
-        <div class="field"><label>DEPARTURE TIME</label><input type="time" id="time-input" value="08:00"></div>
-        <div class="field"><label>CONDITION</label><div style="padding: 10px; font-size: 14px; font-weight: bold; color: var(--navy);">平日ダイヤ (新宿方面)</div></div>
+        <div class="field"><label>出発時刻</label><input type="time" id="time-input" value="08:00"></div>
+        <div class="field"><label>シミュレーション</label><div style="padding:10px; font-weight:bold; color:var(--navy); font-size:14px;">標準ダイヤ予測</div></div>
       </div>
     </div>
     <div id="results" class="results"></div>
@@ -54,88 +63,84 @@ select, input { width: 100%; padding: 10px; border: 1.5px solid var(--line-grey)
 </main>
 
 <script>
-let connections = [];
-const MIN_TRANSFER = 1; 
+const STATIONS = ["湘南台", "大和", "相模大野", "町田", "新百合ケ丘", "登戸", "下北沢", "代々木上原", "新宿"];
+// 駅ごとの新宿までの距離（分）の目安
+const DISTANCE = { "湘南台": 55, "大和": 45, "相模大野": 35, "町田": 32, "新百合ケ丘": 23, "登戸": 16, "下北沢": 7, "代々木上原": 5, "新宿": 0 };
 
-async function init() {
-  try {
-    const res = await fetch('csa_connections_odakyu.json');
-    connections = await res.json();
-    search(); // 初期読み込み時に1回実行
-  } catch (e) {
-    document.getElementById('results').innerHTML = "データの読み込みに失敗しました。";
-  }
-}
-
-document.getElementById('time-input').onchange = search;
-
-function search() {
-  const startMin = timeToMin(document.getElementById('time-input').value);
-  const result = findRoute("湘南台", "新宿", startMin);
-  render(result);
-}
+window.onload = () => {
+    const fS = document.getElementById('from-select');
+    const tS = document.getElementById('to-select');
+    STATIONS.forEach(s => { fS.add(new Option(s, s)); tS.add(new Option(s, s)); });
+    fS.value = "湘南台"; tS.value = "新宿";
+    [fS, tS, document.getElementById('time-input')].forEach(el => el.onchange = simulate);
+    simulate();
+};
 
 function timeToMin(t) {
-  const [h, m] = t.split(':').map(Number);
-  return h * 60 + m;
+    const [h, m] = t.split(':').map(Number);
+    return h * 60 + m;
 }
 
-function findRoute(start, end, startMin) {
-  const bestArr = { [start]: startMin };
-  const cameFrom = {};
+function minToTime(m) {
+    const h = Math.floor(m / 60) % 24;
+    const mm = m % 60;
+    return `${h.toString().padStart(2,'0')}:${mm.toString().padStart(2,'0')}`;
+}
 
-  connections.forEach(c => {
-    const dep = timeToMin(c.departure_time);
-    const arr = timeToMin(c.arrival_time);
-    if (bestArr[c.departure_station] !== undefined) {
-      const ready = (cameFrom[c.departure_station]?.run_id === c.run_id) ? bestArr[c.departure_station] : bestArr[c.departure_station] + MIN_TRANSFER;
-      if (dep >= ready) {
-        if (bestArr[c.arrival_station] === undefined || arr < bestArr[c.arrival_station]) {
-          bestArr[c.arrival_station] = arr;
-          cameFrom[c.arrival_station] = c;
-        }
-      }
+// 💡 予測アルゴリズム
+function simulate() {
+    const from = document.getElementById('from-select').value;
+    const to = document.getElementById('to-select').value;
+    const startMin = timeToMin(document.getElementById('time-input').value);
+    const resDiv = document.getElementById('results');
+
+    if (STATIONS.indexOf(from) >= STATIONS.indexOf(to)) {
+        resDiv.innerHTML = '<div class="results-empty">下り方面の予測には未対応です</div>';
+        return;
     }
-  });
 
-  if (!bestArr[end]) return null;
-  const path = [];
-  let curr = end;
-  while (cameFrom[curr]) {
-    path.unshift(cameFrom[curr]);
-    curr = cameFrom[curr].departure_station;
-  }
-  return path;
+    const travelTime = DISTANCE[from] - DISTANCE[to];
+    
+    // 3つのパターンを予測
+    const patterns = [
+        { type: "快速急行", interval: 20, speed: 1.0, color: "#1f3a93" },
+        { type: "急行", interval: 15, speed: 1.1, color: "#e85d3e" },
+        { type: "各駅停車", interval: 10, speed: 1.5, color: "#6b7280" }
+    ];
+
+    let html = `<div style="font-size:11px; font-weight:900; margin-bottom:15px; color:var(--ink-soft); letter-spacing:0.1em;">PREDICTED OPTIONS</div>`;
+
+    patterns.forEach((p, i) => {
+        // 次の電車が来る時間を計算（何分おき、のロジック）
+        const waitTime = p.interval - (startMin % p.interval);
+        const depMin = startMin + waitTime;
+        const duration = Math.floor(travelTime * p.speed);
+        const arrMin = depMin + duration;
+
+        html += `
+        <div class="option-card ${i === 0 ? 'best' : ''}">
+            <div class="option-top">
+                <span class="option-time">${minToTime(arrMin)} 着</span>
+                <span style="font-size:12px; font-weight:700;">約 ${duration}分</span>
+            </div>
+            <div class="legs">
+                <div class="leg">
+                    <div class="leg-time">${minToTime(depMin)}</div>
+                    <div>
+                        <span class="type-chip" style="background:${p.color}">${p.type}</span><br>
+                        <span style="font-size:14px; font-weight:700;">${from} ➔ ${to}</span>
+                    </div>
+                </div>
+                <div class="leg" style="border:none;">
+                    <div class="leg-time">${minToTime(arrMin)}</div>
+                    <div style="font-weight:700;">${to} 到着</div>
+                </div>
+            </div>
+        </div>`;
+    });
+
+    resDiv.innerHTML = html;
 }
-
-function render(path) {
-  const resDiv = document.getElementById('results');
-  if (!path) {
-    resDiv.innerHTML = '<div class="results-empty">指定の時間以降に新宿へ向かう経路が見つかりませんでした。<br>08:00〜09:00の間で試してみてください。</div>';
-    return;
-  }
-
-  const arrival = path[path.length - 1].arrival_time;
-  const totalTime = timeToMin(arrival) - timeToMin(path[0].departure_time);
-  
-  let html = `<div class="option-card best">
-    <div class="option-top"><span class="option-time">${arrival} 着</span><span style="font-size:12px; font-weight:700;">所要 ${totalTime}分</span></div>
-    <div class="legs">`;
-  
-  path.forEach((l, idx) => {
-    if (idx > 0 && path[idx-1].run_id !== l.run_id) html += `<div style="padding-left:25px; color:var(--amber); font-size:12px; font-weight:700;">↓ 乗り換え (${l.departure_station})</div>`;
-    const color = l.train_type === '快速急行' ? '#1f3a93' : (l.train_type === '急行' ? '#e85d3e' : '#6b7280');
-    html += `<div class="leg">
-      <div class="leg-time">${l.departure_time}</div>
-      <div><span class="type-chip" style="background:${color}">${l.train_type}</span><br>
-      <span style="font-size:13px; font-weight:700;">${l.departure_station} ➔ ${l.arrival_station}</span></div>
-    </div>`;
-  });
-  html += `</div></div>`;
-  resDiv.innerHTML = html;
-}
-
-init();
 </script>
 </body>
 </html>
