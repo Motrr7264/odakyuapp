@@ -4,53 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>のりかえ早見 — Odakyu Line (SFC Edition)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --navy: #1f3a93; --navy-deep: #142a6b; --amber: #e8742c; --amber-soft: #fbe4d0;
-  --cream: #faf7f2; --paper: #ffffff; --ink: #1a1d29; --ink-soft: #5b5f72;
-  --line-grey: #d8d4ca; --good-green: #2f8f5b;
-  --font-display: 'Space Grotesk', 'Zen Kaku Gothic New', sans-serif;
+  --navy: #1f3a93; --amber: #e8742c; --cream: #faf7f2; --paper: #ffffff;
+  --ink: #1a1d29; --ink-soft: #5b5f72; --line-grey: #d8d4ca; --good-green: #2f8f5b;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--cream); color: var(--ink); font-family: 'Zen Kaku Gothic New', sans-serif; line-height: 1.6; }
-header.hero { background: var(--navy); color: white; padding: 40px 24px 60px; text-align: center; }
-.hero-inner { max-width: 800px; margin: 0 auto; }
-h1.title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 48px); margin-bottom: 10px; }
+header { background: var(--navy); color: white; padding: 40px 24px 60px; text-align: center; }
+h1 { font-family: 'Space Grotesk', sans-serif; font-size: 32px; margin-bottom: 8px; }
 .accent { color: var(--amber); }
-
 main { max-width: 800px; margin: 0 auto; padding: 0 20px 80px; }
 .panel { background: var(--paper); border: 1px solid var(--line-grey); border-radius: 14px; margin-top: -30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
 .controls { padding: 25px; border-bottom: 1px solid var(--line-grey); }
 .controls-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-.field label { display: block; font-size: 12px; font-weight: 700; color: var(--ink-soft); margin-bottom: 5px; text-transform: uppercase; }
+.field label { display: block; font-size: 11px; font-weight: 900; color: var(--ink-soft); margin-bottom: 5px; }
 select, input { width: 100%; padding: 10px; border: 1.5px solid var(--line-grey); border-radius: 8px; font-size: 16px; background: var(--cream); height: 44px; }
-.swap-row { text-align: center; margin: -10px 0 10px; }
-.swap-btn { background: var(--amber-soft); border: none; color: var(--amber); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; }
+.swap-btn { background: #fbe4d0; border: none; color: var(--amber); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; margin: -10px auto 10px; display: block; }
 .toggle { display: flex; background: var(--cream); border-radius: 8px; padding: 3px; gap: 3px; }
-.toggle button { flex: 1; border: none; background: transparent; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: 600; color: var(--ink-soft); }
+.toggle button { flex: 1; border: none; background: transparent; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: 700; color: var(--ink-soft); }
 .toggle button.active { background: var(--navy); color: white; }
-
 .results { padding: 25px; }
-.results-empty { text-align: center; padding: 40px; color: var(--ink-soft); font-weight: 600; }
-.results-heading { font-size: 14px; font-weight: 700; margin-bottom: 15px; color: var(--ink-soft); }
+.results-empty { text-align: center; padding: 40px; color: var(--ink-soft); font-weight: 700; }
 .option-card { border: 1.5px solid var(--line-grey); border-radius: 12px; padding: 15px; margin-bottom: 15px; }
 .option-card.best { border-color: var(--good-green); background: linear-gradient(180deg, rgba(47,143,91,0.05), transparent); }
-.option-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-.option-time { font-family: var(--font-display); font-size: 26px; font-weight: 700; }
-.leg { display: grid; grid-template-columns: 70px 1fr; gap: 10px; padding: 6px 0; align-items: center; }
-.leg-time { font-family: var(--font-display); font-weight: 600; color: var(--ink-soft); }
-.type-chip { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; color: white; margin-right: 5px; }
-.transfer { padding-left: 70px; color: var(--amber); font-size: 12px; font-weight: 700; margin: 4px 0; }
+.option-time { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; }
+.leg { display: grid; grid-template-columns: 70px 1fr; gap: 10px; padding: 8px 0; align-items: center; border-left: 3px solid var(--line-grey); margin-left: 10px; padding-left: 15px; }
+.leg-time { font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.type-chip { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; color: white; margin-bottom: 4px; display: inline-block; }
 </style>
 </head>
 <body>
 
-<header class="hero">
+<header>
   <div class="hero-inner">
-    <div class="eyebrow-container"><span class="eyebrow" style="background:rgba(255,255,255,0.1); padding:4px 12px; border-radius:100px; font-size:12px;">ODAKYU LINE</span></div>
-    <h1 class="title">待つ？乗る？<br><span class="accent">最適ルート判定</span></h1>
+    <h1>ODAKYU <span class="accent">RACE</span></h1>
+    <p style="font-size: 14px; opacity: 0.8;">SFC Student Edition / Ekispert API v1.0</p>
   </div>
 </header>
 
@@ -58,22 +48,19 @@ select, input { width: 100%; padding: 10px; border: 1.5px solid var(--line-grey)
   <div class="panel">
     <div class="controls">
       <div class="controls-grid">
-        <div class="field"><label>出発駅</label><select id="from-select"></select></div>
-        <div class="field"><label>到着駅</label><select id="to-select"></select></div>
+        <div class="field"><label>FROM</label><select id="from-select"></select></div>
+        <div class="field"><label>TO</label><select id="to-select"></select></div>
       </div>
-      <div class="swap-row"><button class="swap-btn" id="swap-btn">⇅</button></div>
+      <button class="swap-btn" id="swap-btn">⇅</button>
       <div class="controls-grid">
-        <div class="field"><label>時刻</label><input type="time" id="time-input" value="09:00"></div>
+        <div class="field"><label>TIME</label><input type="time" id="time-input" value="09:00"></div>
         <div class="field">
-          <label>条件</label>
-          <div class="toggle">
-            <button id="dep-btn" class="active">出発</button>
-            <button id="arr-btn">到着</button>
-          </div>
+          <label>TYPE</label>
+          <div class="toggle"><button id="dep-btn" class="active">出発</button><button id="arr-btn">到着</button></div>
         </div>
       </div>
     </div>
-    <div id="results" class="results"><div class="results-empty">駅を選択して検索してください</div></div>
+    <div id="results" class="results"><div class="results-empty">駅を選択してください</div></div>
   </div>
 </main>
 
@@ -81,21 +68,41 @@ select, input { width: 100%; padding: 10px; border: 1.5px solid var(--line-grey)
 const KEY = 'LE_eWWAAeLcqGQ3g';
 let mode = 'departure';
 
-// 駅すぱあと(Light)が認識しやすい「正式名称」のリスト
-const STATIONS = [
-  "新宿", "代々木上原", "下北沢", "経堂", "成城学園前", "登戸", "向ケ丘遊園", 
-  "新百合ケ丘", "町田", "相模大野", "海老名", "本厚木", "伊勢原", "秦野", 
-  "小田原", "中央林間", "大和(神奈川県)", "湘南台", "藤沢", "片瀬江ノ島", "唐木田"
+// 💡 解決の鍵：小田急線の「駅コード（ID）」を直接指定
+const ODAKYU = [
+  { name: "新宿", code: "22513" },
+  { name: "代々木上原", code: "22931" },
+  { name: "下北沢", code: "22728" },
+  { name: "経堂", code: "22656" },
+  { name: "成城学園前", code: "22765" },
+  { name: "登戸", code: "23030" },
+  { name: "向ケ丘遊園", code: "23063" },
+  { name: "新百合ケ丘", code: "22771" },
+  { name: "町田", code: "22894" },
+  { name: "相模大野", code: "22709" },
+  { name: "海老名", code: "22557" },
+  { name: "本厚木", code: "22938" },
+  { name: "伊勢原", code: "22521" },
+  { name: "秦野", code: "22849" },
+  { name: "小田原", code: "22621" },
+  { name: "中央林間", code: "22791" },
+  { name: "大和", code: "23098" },
+  { name: "湘南台", code: "23075" },
+  { name: "藤沢", code: "22863" },
+  { name: "片瀬江ノ島", code: "22591" },
+  { name: "多摩センター", code: "22744" },
+  { name: "唐木田", code: "22588" }
 ];
 
 window.onload = () => {
   const fromS = document.getElementById('from-select');
   const toS = document.getElementById('to-select');
-  STATIONS.forEach(s => {
-    fromS.add(new Option(s.split('(')[0], s));
-    toS.add(new Option(s.split('(')[0], s));
+  ODAKYU.forEach(s => {
+    fromS.add(new Option(s.name, s.code));
+    toS.add(new Option(s.name, s.code));
   });
-  fromS.value = "湘南台"; toS.value = "新宿";
+  fromS.value = "23075"; // 湘南台
+  toS.value = "22513";   // 新宿
 
   document.getElementById('dep-btn').onclick = () => { mode='departure'; updateUI(); search(); };
   document.getElementById('arr-btn').onclick = () => { mode='arrival'; updateUI(); search(); };
@@ -115,57 +122,42 @@ async function search() {
   const tm = document.getElementById('time-input').value.replace(':','');
   const resDiv = document.getElementById('results');
 
-  resDiv.innerHTML = '<div class="results-empty">🔄 検索中...</div>';
+  resDiv.innerHTML = '<div class="results-empty">🔄 問い合わせ中...</div>';
 
-  // 💡 search/course/light を使用
-  const url = `https://api.ekispert.jp/v1/json/search/course/light?key=${KEY}&from=${encodeURIComponent(f)}&to=${encodeURIComponent(t)}&time=${tm}&searchType=${mode}`;
+  // 💡 駅コード（数字）をそのまま from と to に入れる
+  const url = `https://api.ekispert.jp/v1/json/search/course/light?key=${KEY}&from=${f}&to=${t}&time=${tm}&searchType=${mode}`;
 
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log("API Response:", data); // デバッグ用にコンソールに表示
 
-    if (!data.ResultSet) {
-      resDiv.innerHTML = '<div class="results-empty">⚠️ APIから応答がありません</div>';
-      return;
-    }
-
-    // エラーがある場合
     if (data.ResultSet.Error) {
-      resDiv.innerHTML = `<div class="results-empty" style="color:red;">⚠️ APIエラー: ${data.ResultSet.Error.Message}</div>`;
+      resDiv.innerHTML = `<div class="results-empty" style="color:red;">⚠️ ${data.ResultSet.Error.Message}</div>`;
       return;
     }
 
-    // 駅名が曖昧な場合（候補リストが返ってきた場合）
-    if (data.ResultSet.Point) {
-      resDiv.innerHTML = '<div class="results-empty">⚠️ 駅名が曖昧です。リストから選び直してください。</div>';
-      return;
-    }
-
-    // 経路がない場合
     if (!data.ResultSet.Course) {
-      resDiv.innerHTML = '<div class="results-empty">❌ 経路が見つかりませんでした。<br><small>駅名や時間を変えてみてください。</small></div>';
+      resDiv.innerHTML = '<div class="results-empty">❌ 経路が見つかりませんでした</div>';
       return;
     }
 
-    render(data.ResultSet.Course, f, t);
+    render(data.ResultSet.Course);
   } catch (err) {
-    resDiv.innerHTML = '<div class="results-empty">⚠️ 通信エラーが発生しました</div>';
+    resDiv.innerHTML = '<div class="results-empty">⚠️ 通信エラー</div>';
   }
 }
 
-function render(courseData, f, t) {
+function render(courseData) {
   const resDiv = document.getElementById('results');
   let courses = Array.isArray(courseData) ? courseData : [courseData];
-  let html = `<div class="results-heading">✨ 検索結果 (${f.split('(')[0]} → ${t.split('(')[0]})</div>`;
+  let html = `<div style="font-size:12px; font-weight:900; margin-bottom:15px; color:var(--ink-soft);">RESULT</div>`;
 
   courses.slice(0, 3).forEach((c, i) => {
-    const time = c.TimeSummary;
     const arrival = c.Route.ArrivalState.Datetime.text.split('T')[1].substring(0,5);
     html += `<div class="option-card ${i===0?'best':''}">
       <div class="option-top">
         <span class="option-time">${arrival} 着</span>
-        <span style="font-size:12px; font-weight:700; color:var(--ink-soft);">所要 ${time.Total}分</span>
+        <span style="font-size:12px; font-weight:700;">${c.TimeSummary.Total}分</span>
       </div>
       <div class="legs">`;
     
@@ -176,8 +168,10 @@ function render(courseData, f, t) {
       const color = l.Name.includes('急') ? '#e85d3e' : (l.Name.includes('快速') ? '#1f3a93' : '#6b7280');
       html += `<div class="leg">
         <div class="leg-time">${depT}</div>
-        <div class="leg-detail"><span class="type-chip" style="background:${color}">${l.Name}</span><br>
-        <span style="font-size:13px; font-weight:600;">${l.DepartureState.Name} ➔ ${l.ArrivalState.Name}</span></div>
+        <div>
+          <span class="type-chip" style="background:${color}">${l.Name}</span><br>
+          <span style="font-size:13px; font-weight:700;">${l.DepartureState.Name} ➔ ${l.ArrivalState.Name}</span>
+        </div>
       </div>`;
     });
     html += `</div></div>`;
